@@ -1,4 +1,9 @@
 chrome.runtime.onInstalled.addListener(function () {
+
+	chrome.storage.local.set({action: "stop"}, function() {
+        console.log('action is set to stop');
+    });
+
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
         chrome.declarativeContent.onPageChanged.addRules([{
             conditions: [new chrome.declarativeContent.PageStateMatcher({
@@ -8,5 +13,4 @@ chrome.runtime.onInstalled.addListener(function () {
             actions: [new chrome.declarativeContent.ShowPageAction()]
         }]);
     });
-
 });
