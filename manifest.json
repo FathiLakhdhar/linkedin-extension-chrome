@@ -24,6 +24,16 @@
         "48": "images/linkedin48.png",
         "128": "images/linkedin128.png"
     },
+    "content_scripts": [
+        {
+            "matches": ["https://www.linkedin.com/mynetwork/*"],
+            "js": ["mynetwork.js"]
+        },
+        {
+            "matches": ["https://www.linkedin.com/search/results/people/*"],
+            "js": ["searchPeople.js"]
+        }
+    ],
     "permissions": [
         "activeTab",
         "declarativeContent",
