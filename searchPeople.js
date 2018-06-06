@@ -58,18 +58,19 @@ let api = (function(){
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
-        if (request.action === "start"){
-            console.log(request);
-            sendResponse({ farewell: "start send invites" });
-            api.start();
-        }
-        if (request.action === "stop"){
-            console.log(request);
-            sendResponse({ farewell: "stop send invites" });
-            api.stop();
-        }
-        if (request.action === "count"){
-            console.log(request);
-            sendResponse({ farewell: `count ${api.count()}` });
+        switch(request.action) {
+            case "start":
+                sendResponse({ farewell: "start send invites" });
+                api.start();
+                break;
+            case "stop":
+                sendResponse({ farewell: "stop send invites" });
+                api.stop();
+                break;
+            case "count":
+                sendResponse({ farewell: `count ${api.count()}` });
+                break;
+            default:
+                break;
         }
 });
